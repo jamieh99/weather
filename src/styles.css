@@ -1,0 +1,94 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+  /*overflow: hidden; /* Hide scrollbars */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 90%;
+  display: grid;
+  grid-template-rows: 450px 1fr;
+  border-radius: 10px;
+  border-left: 8px solid#1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.top {
+  background-image: url("./images/goatfell.jpg");
+  background-color: #1992d4;
+  background-repeat: space;
+  background-position: center;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+header {
+  background-color: #1992d4;
+  color: white;
+  font-size: large;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  border-radius: 10px;
+  border-left: 8px solid lightblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+  height: 50px;
+  place-self: center;
+  align-items: center;
+  padding-left: 10px;
+  gap: 10px;
+}
+
+.search {
+  background-color: #1992d4;
+  color: white;
+  font-size: large;
+  display: flex;
+  border-radius: 10px;
+  border-left: 8px solid lightblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+  height: 50px;
+  place-self: center;
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.location {
+  width: 80%;
+}
+
+fieldset {
+  border: transparent;
+}
+
+input[type="text"] {
+  width: 200px;
+  height: 15px;
+  padding: 12px 20px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #e2e8f0;
+}
+
+input:focus {
+  background-color: white;
+}
+
+.bottom {
+  border: 5px solid lightblue;
+}
+
+.report {
+}

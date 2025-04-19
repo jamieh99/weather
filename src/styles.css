@@ -59,12 +59,18 @@ body {
   height: 50px;
   place-self: center;
   padding-left: 10px;
-  display: flex;
-  justify-content: flex-start;
+}
+
+form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  /*justify-content: flex-start;*/
   align-items: center;
 }
 
 fieldset {
+  width: 100%;
   border: transparent;
   margin: 0;
   padding: 0;
@@ -85,6 +91,21 @@ input:focus {
   background-color: white;
 }
 
+button {
+  width: 70px;
+  height: 30px;
+  background-color: #e2e8f0;
+  border-radius: 20px;
+  border-color: darkblue;
+  font-size: 16px;
+  color: darkblue;
+  cursor: pointer;
+}
+
+button:hover {
+  width: 90px;
+}
+
 .bottom {
   border: 5px solid lightblue;
   display: grid;
@@ -95,6 +116,7 @@ input:focus {
   grid-template-rows: 30px 1fr;
   gap: 5px;
   margin: 5px;
+  color: darkblue;
 }
 
 .bottom header {

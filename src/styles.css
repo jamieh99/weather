@@ -31,7 +31,7 @@ body {
   padding-top: 10px;
 }
 
-header {
+.top header {
   background-color: #1992d4;
   color: white;
   font-size: large;
@@ -45,7 +45,6 @@ header {
   place-self: center;
   align-items: center;
   padding-left: 10px;
-  gap: 10px;
 }
 
 .search {
@@ -61,15 +60,15 @@ header {
   place-self: center;
   padding-left: 10px;
   display: flex;
-  justify-content: center;
-}
-
-.location {
-  width: 80%;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 fieldset {
   border: transparent;
+  margin: 0;
+  padding: 0;
+  place-self: center;
 }
 
 input[type="text"] {
@@ -88,7 +87,34 @@ input:focus {
 
 .bottom {
   border: 5px solid lightblue;
+  display: grid;
+  grid-template-areas:
+    "head head"
+    "tod tom";
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 30px 1fr;
+  gap: 5px;
+  margin: 5px;
 }
 
-.report {
+.bottom header {
+  grid-area: head;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  color: darkblue;
+}
+
+.todayReport {
+  grid-area: tod;
+  border: 3px solid #1992d4;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.tomorrowReport {
+  grid-area: tom;
+  border: 3px solid #1992d4;
+  border-radius: 10px;
+  padding: 5px;
 }

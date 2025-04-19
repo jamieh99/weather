@@ -6,9 +6,9 @@ import { locationToday } from "./locationToday.js";
 import { locationTom } from "./locationTom.js";
 
 todayReport();
-tomorrowReport();
-todayDate();
-tomorrowDate();
+//tomorrowReport();
+//todayDate();
+//tomorrowDate();
 
 document.addEventListener("DOMContentLoaded", () => {
   const locationButton = document.querySelector("button");

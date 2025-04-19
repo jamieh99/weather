@@ -20,6 +20,7 @@ export function locationToday() {
       let celsius = Math.round((temp - 32) / (9 / 5));
       rain = response.days[0].precipprob;
       wind = response.days[0].windspeed;
+      let windRounded = Math.round(wind);
       const displayDescription = document.querySelector(".description");
       displayDescription.textContent = `${description}`;
       const displayTemp = document.querySelector(".temp");
@@ -27,7 +28,7 @@ export function locationToday() {
       const displayRain = document.querySelector(".rain");
       displayRain.textContent = `There is a ${rain}% chance of rain.`;
       const displayWind = document.querySelector(".wind");
-      displayWind.textContent = `The wind speed will be ${wind}mph.`;
+      displayWind.textContent = `The wind speed will be ${windRounded}mph.`;
       console.log(description);
     });
 }

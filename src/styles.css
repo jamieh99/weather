@@ -36,7 +36,7 @@ body {
   color: white;
   font-size: large;
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 60% 20% 5% 15%;
   border-radius: 10px;
   border-left: 8px solid lightblue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -45,6 +45,37 @@ body {
   place-self: center;
   align-items: center;
   padding-left: 10px;
+}
+
+.logo {
+  place-self: center;
+  padding-top: 10px;
+}
+
+.acks {
+  position: relative; /* this is the reference point for .shoutoutsText */
+}
+
+.acks .acksText {
+  visibility: hidden;
+  width: 350px;
+  background-color: white;
+  color: darkblue;
+  text-align: center;
+  padding: 5px 0;
+  border: 2px solid black;
+  border-radius: 6px;
+  position: absolute;
+  top: 100%; /* this positions below the text about its parent, i.e., .ackss */
+  left: 50%; /* this centres it horizontally. NB there is no need for margin-left */
+  transform: translateX(
+    -50%
+  ); /* this offsets the left 50% to truly center it */
+  z-index: 1;
+}
+
+.acks:hover .acksText {
+  visibility: visible;
 }
 
 .search {
@@ -117,6 +148,7 @@ button:hover {
   gap: 5px;
   margin: 5px;
   color: darkblue;
+  justify-content: center;
 }
 
 .bottom header {

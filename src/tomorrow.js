@@ -17,6 +17,7 @@ export function tomorrowReport() {
       let celsius = Math.round((temp - 32) / (9 / 5));
       rain = response.days[1].precipprob;
       wind = response.days[1].windspeed;
+      let windRounded = Math.round(wind);
       const displayDescription = document.querySelector(".tomorrowDescription");
       displayDescription.textContent = `${description}`;
       const displayTemp = document.querySelector(".tomorrowTemp");
@@ -24,7 +25,7 @@ export function tomorrowReport() {
       const displayRain = document.querySelector(".tomorrowRain");
       displayRain.textContent = `There is a ${rain}% chance of rain.`;
       const displayWind = document.querySelector(".tomorrowWind");
-      displayWind.textContent = `The wind speed will be ${wind}mph.`;
+      displayWind.textContent = `The wind speed will be ${windRounded}mph.`;
       console.log(description);
     });
 }

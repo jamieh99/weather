@@ -13,7 +13,7 @@ body {
 .container {
   width: 90%;
   display: grid;
-  grid-template-rows: 450px 1fr;
+  grid-template-rows: 350px 1fr;
   border-radius: 10px;
   border-left: 8px solid#1992d4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -153,22 +153,72 @@ button:hover {
 
 .bottom header {
   grid-area: head;
+  width: 30%;
+  padding: 2px;
+  background-color: #1992d4;
+  border-radius: 20px;
+  border-color: darkblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: large;
   display: flex;
   justify-content: center;
-  color: darkblue;
+  align-items: center;
+  place-self: center;
+  color: white;
 }
 
 .todayReport {
   grid-area: tod;
   border: 3px solid #1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   padding: 5px;
+  display: grid;
+  grid-template-areas:
+    "date"
+    "icons"
+    "desc"
+    "rtw";
+  grid-template-rows: 20px 1fr 30px 2fr;
+}
+
+.todayDate {
+  grid-area: date;
+  height: 20px;
+  border: 1px solid #1992d4;
+}
+
+.icons {
+  grid-area: icons;
+  border: 1px solid #1992d4;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.icon1 {
+}
+
+.description {
+  grid-area: desc;
+  border: 1px solid #1992d4;
+}
+
+.rainTempWind {
+  grid-area: rtw;
+  border: 1px solid #1992d4;
 }
 
 .tomorrowReport {
   grid-area: tom;
   border: 3px solid #1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   padding: 5px;
+}
+
+.tomorrowDate {
+  border: 1px solid #1992d4;
 }

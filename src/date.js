@@ -49,20 +49,20 @@ export function todayDate() {
 export function tomorrowDate() {
   let tomorrowDate = new Date(dateToday);
   tomorrowDate.setDate(dateToday.getDate() + 1);
-  let date = tomorrowDate.getDate();
+  let date2 = tomorrowDate.getDate();
   let month = months[tomorrowDate.getMonth()];
   let tomorrowDay = days[tomorrowDate.getDay()];
 
-  if (st.includes(tomorrowDate)) {
+  if (st.includes(date2)) {
     suffix = "st";
-  } else if (nd.includes(tomorrowDate)) {
+  } else if (nd.includes(date2)) {
     suffix = "nd";
-  } else if (rd.includes(tomorrowDate)) {
+  } else if (rd.includes(date2)) {
     suffix = "rd";
   } else {
     suffix = "th";
   }
 
   const dateForTomorrow = document.querySelector(".tomorrowDate");
-  dateForTomorrow.textContent = `${tomorrowDay} the ${date}${suffix} of ${month}`;
+  dateForTomorrow.textContent = `${tomorrowDay} the ${date2}${suffix} of ${month}`;
 }

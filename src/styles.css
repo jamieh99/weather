@@ -156,7 +156,7 @@ button:hover {
   width: 30%;
   padding: 2px;
   background-color: #1992d4;
-  border-radius: 20px;
+  border-radius: 5px;
   border-color: darkblue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: large;
@@ -166,6 +166,94 @@ button:hover {
   place-self: center;
   color: white;
 }
+
+.todayReport {
+  grid-area: tod;
+  border: 3px solid #1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  padding: 5px;
+  display: grid;
+  grid-template-rows: 25px 1fr 30px;
+}
+
+.todayDate {
+  width: 35%;
+  padding-left: 5px;
+  background-color: #1992d4;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: large;
+  display: flex;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.report {
+  width: 100%;
+  background-color: rgb(141, 198, 247);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: repeat(16, auto);
+  align-items: center;
+}
+
+.report .title {
+  width: 115px;
+  place-self: center;
+}
+
+.report div {
+  width: 50px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.report .period {
+  width: 50px;
+  height: 20px;
+}
+
+.tomorrowReport {
+  grid-area: tom;
+  border: 3px solid #1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  padding: 5px;
+  display: grid;
+  grid-template-rows: 25px 1fr 30px;
+}
+
+.tomorrowDate {
+  width: 35%;
+  padding-left: 5px;
+  background-color: #1992d4;
+  border-radius: 5px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: large;
+  display: flex;
+  margin-bottom: 5px;
+
+  color: white;
+}
+
+.reportForTomorrow {
+  width: 100%;
+  background-color: rgb(141, 198, 247);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: repeat(16, auto);
+  align-items: center;
+}
+
+/* VERSION one 
 
 .todayReport {
   grid-area: tod;
@@ -185,12 +273,10 @@ button:hover {
 .todayDate {
   grid-area: date;
   height: 20px;
-  border: 1px solid #1992d4;
 }
 
 .icons {
   grid-area: icons;
-  border: 1px solid #1992d4;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -198,18 +284,46 @@ button:hover {
   gap: 30px;
 }
 
-.icon1 {
-}
-
 .description {
   grid-area: desc;
-  border: 1px solid #1992d4;
 }
 
 .rainTempWind {
   grid-area: rtw;
-  border: 1px solid #1992d4;
+
+  display: grid;
+  grid-template-areas:
+    "rain"
+    "temp"
+    "wind";
 }
+
+.rain {
+  grid-area: rain;
+  display: flex;
+  flex-wrap: nowrap;
+  /*justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+/*
+.rain .heading {
+  width: 200px;
+}
+
+.temp {
+  grid-area: temp;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.wind {
+  grid-area: wind;
+  display: flex;
+  flex-wrap: nowrap;
+}
+  
+  
 
 .tomorrowReport {
   grid-area: tom;
@@ -222,3 +336,5 @@ button:hover {
 .tomorrowDate {
   border: 1px solid #1992d4;
 }
+  ENOD OF VESRION ONE
+*/

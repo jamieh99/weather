@@ -48,92 +48,120 @@
         </div>
       </div>
       <!--END OF TOP-->
+
+      <!-- VERSION TWO -->
       <div class="bottom">
         <header>Weather for Stevenston</header>
         
         <div class="todayReport">
           <div class="todayDate"></div>
-          <!--icons box-->
-          <div class="icons">
-            <div class="icon1">8 AM</div>
-            <div class="icon2">2 PM</div>
-            <div class="icon3">10 PM</div>
-          </div>
-           <!--description box-->
-          <div class="description"></div>
-          
-          <!--rain, temp and wind box-->
-          <div class="rainTempWind">
-           
-            <!--rain-->
-            <div class="rain">
+          <div class="report">
+            <div class="title"></div>
+              <div class="icon1"></div>
+              <div class="icon2"></div>
+              <div class="icon3"></div>
+              
+              <div class="title">Chance of rain</div>
               <div class="rainAM">
-              <div class="rainDescripAM"></div>
-              <div class="rainSnowIconAM"></div>
+                <span class="rainSnowIconAM"></span>
+                <span class="rainDescripAM"></span>
+              </div>
+              <div class="rainPM">
+                <span class="rainSnowIconPM"></span>
+                <span class="rainDescripPM"></span>
+              </div>
+              <div class="rainNight">
+                <span class="rainSnowIconNight"></span>
+                <span class="rainDescripNight"></span>
+              </div>
+
+            <div class="title">Temperature &deg;C</div>
+            <div class="tempDescripAM"></div>
+            <div class="tempDescripPM"></div>              
+            <div class="tempDescripNight"></div>
+
+            <div class="title">Wind speed</div>
+            <div class="windAM">
+              <span class="windIconAM"></span>
+              <span class="windDescripAM"></span>
             </div>
-            <div class="rainPM">
-              <div class="rainDescripPM"></div>
-              <div class="rainSnowIconPM"></div>
+            <div class="windPM">
+              <span class="windIconPM"></span>
+              <span class="windDescripPM"></span>
             </div>
-            <div class="rainNight">
-              <div class="rainDescripNight"></div>
-              <div class="rainSnowIconNight"></div>
+            <div class="windNight">
+              <span class="windIconNight"></span>
+              <span class="windDescripNight"></span>
             </div>
-            </div> 
-        
-          <!--temp-->
-          <div class="temp">
-            <div class="tempDescrip"></div>
-            <div class="tempIcon"></div>
+
+           <div class="period" ></div>
+           <div class="period">AM</div>
+           <div class="period">PM</div>
+           <div class="period">Night</div>
+      
+          </div> <!-- end of report-->
+          <div class="description"></div>
+        </div> <!-- enod of today report-->
+
+        <div class="tomorrowReport">
+          <div class="tomorrowDate"></div>
+          <div class="reportForTomorrow">
+            <div class="title"></div>
+          
+            <div class="icons">
+            <div class="tomIcon1"></div>
+            <div class="tomIcon2"></div>
+            <div class="tomIcon3"></div>
           </div>
 
-          <!--wind-->
-          <div class="wind">
-            <div class="windDescrip"></div>
-          <div class="windIcon"></div>
-        </div>
+          <div class="title">Chance of rain</div>
+              <div class="tomRainAM">
+                <span class="tomRainSnowIconAM"></span>
+                <span class="tomRainDescripAM"></span>
+              </div>
+              <div class="tomRainPM">
+                <span class="tomRainSnowIconPM"></span>
+                <span class="tomRainDescripPM"></span>
+              </div>
+              <div class="tomRainNight">
+                <span class="tomRainSnowIconNight"></span>
+                <span class="tomRainDescripNight"></span>
+              </div>
 
-          </div> <!--ENDO OF rain, temp and wind box-->
-        
-      </div> <!-- END OF TODAY REPORT-->
+            <div class="title">Temperature &deg;C</div>
+            <div class="tomTempDescripAM"></div>
+            <div class="tomTempDescripPM"></div>              
+            <div class="tomTempDescripNight"></div>
 
-      <div class="tomorrowReport">
-        <div class="tomorrowDate"></div>
-        
-        <!--icons box-->
-        <div class="icons">
-          <div class="tomorrowIcon1"></div>
-          <div class="tomorrowIcon2"></div>
-          <div class="tomorrowIcon3"></div>
-        </div>
-        
-        <!--description box-->
-        <div class="tomorrowDescription"></div>
-        
-        <!--rain, temp and wind box-->
-        <div class="rainTempWind">
-        <!--rain-->
-        <div class="rain">
-          <div class="tomorrowRainDescrip"></div>
-          <div class="tomorrowRainSnowIcon"></div>
-        </div>
-          <!--temp-->
-          <div class="temp">
-          <div class="tomorrowTempDescrip"></div>
-          <div class="tomorrowTempIcon"></div>
-        </div>
-          <!--wind-->
-          <div class="wind">
-            <div class="tomorrowWindDescrip"></div>
-          <div class="tomorrowWindIcon"></div>
-        </div>
-        </div>
+            <div class="title">Wind speed</div>
+            <div class="tomWindAM">
+              <span class="tomWindIconAM"></span>
+              <span class="tomWindDescripAM"></span>
+            </div>
+            <div class="tomWindPM">
+              <span class="tomWindIconPM"></span>
+              <span class="tomWindDescripPM"></span>
+            </div>
+            <div class="tomWindNight">
+              <span class="tomWindIconNight"></span>
+              <span class="tomWindDescripNight"></span>
+            </div>
 
-      </div> <!--END oF TOMORROW REPORT -->
-    
-    </div> <!--END OF BOTTOM-->
+           <div class="period" ></div>
+           <div class="period">AM</div>
+           <div class="period">PM</div>
+           <div class="period">Night</div>
+      
+          </div> <!-- end of report-->
+          
+          <div class="tomorrowDescription"></div>
+  
+        </div> <!--END oF TOMORROW REPORT -->
+          
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        </div> <!-- END OF BOTTOM-->
+
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="my-avatar">
             <rect width="60px" height="60px" fill="#C4D9DE" />
               <line x1="0" y1="0" x2="60" y2="60" stroke="black" />

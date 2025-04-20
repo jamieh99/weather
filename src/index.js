@@ -6,7 +6,7 @@ import { locationToday } from "./locationToday.js";
 import { locationTom } from "./locationTom.js";
 
 todayReport();
-//tomorrowReport();
+tomorrowReport();
 todayDate();
 tomorrowDate();
 

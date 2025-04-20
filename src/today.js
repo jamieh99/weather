@@ -23,7 +23,7 @@ export function todayReport() {
       let iconNight;
 
       // AM
-      if (hours[8].conditions.includes("cloud")) {
+      if (hours[8].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -38,44 +38,44 @@ export function todayReport() {
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
         iconAM = cloud;
-
-        if (hours[8].conditions.includes("Partially")) {
-          const partial = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          partial.setAttribute("viewBox", "0 0 24 24");
-          partial.setAttribute("width", "50px");
-          partial.setAttribute("height", "50px");
-          const use = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "use"
-          );
-          use.setAttributeNS(
-            "http://www.w3.org/1999/xlink",
-            "href",
-            "#partially-cloudy"
-          );
-          partial.appendChild(use);
-          iconAM = partial;
-        }
-        if (hours[8].conditions.includes("rain")) {
-          const rain = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          rain.setAttribute("viewBox", "0 0 24 24");
-          rain.setAttribute("width", "50px");
-          rain.setAttribute("height", "50px");
-          const use = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "use"
-          );
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
-          rain.appendChild(use);
-          iconAM = rain;
-        }
-      } else {
+      }
+      if (hours[8].conditions.toLowerCase().includes("partially")) {
+        const partial = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        partial.setAttribute("viewBox", "0 0 24 24");
+        partial.setAttribute("width", "50px");
+        partial.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS(
+          "http://www.w3.org/1999/xlink",
+          "href",
+          "#partially-cloudy"
+        );
+        partial.appendChild(use);
+        iconAM = partial;
+      }
+      if (hours[8].conditions.toLowerCase().includes("rain")) {
+        const rain = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        rain.setAttribute("viewBox", "0 0 24 24");
+        rain.setAttribute("width", "50px");
+        rain.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
+        rain.appendChild(use);
+        iconAM = rain;
+      }
+      if (hours[8].conditions.toLowerCase().includes("sun")) {
         const sun = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -94,7 +94,7 @@ export function todayReport() {
       icon1.appendChild(iconAM);
 
       // PM
-      if (hours[14].conditions.includes("cloud")) {
+      if (hours[14].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -109,44 +109,44 @@ export function todayReport() {
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
         iconPM = cloud;
-
-        if (hours[14].conditions.includes("Partially")) {
-          const partial = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          partial.setAttribute("viewBox", "0 0 24 24");
-          partial.setAttribute("width", "50px");
-          partial.setAttribute("height", "50px");
-          const use = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "use"
-          );
-          use.setAttributeNS(
-            "http://www.w3.org/1999/xlink",
-            "href",
-            "#partially-cloudy"
-          );
-          partial.appendChild(use);
-          iconPM = partial;
-        }
-        if (hours[14].conditions.includes("rain")) {
-          const rain = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          rain.setAttribute("viewBox", "0 0 24 24");
-          rain.setAttribute("width", "50px");
-          rain.setAttribute("height", "50px");
-          const use = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "use"
-          );
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
-          rain.appendChild(use);
-          iconPM = rain;
-        }
-      } else {
+      }
+      if (hours[14].conditions.toLowerCase().includes("partially")) {
+        const partial = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        partial.setAttribute("viewBox", "0 0 24 24");
+        partial.setAttribute("width", "50px");
+        partial.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS(
+          "http://www.w3.org/1999/xlink",
+          "href",
+          "#partially-cloudy"
+        );
+        partial.appendChild(use);
+        iconPM = partial;
+      }
+      if (hours[14].conditions.toLowerCase().includes("rain")) {
+        const rain = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        rain.setAttribute("viewBox", "0 0 24 24");
+        rain.setAttribute("width", "50px");
+        rain.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
+        rain.appendChild(use);
+        iconPM = rain;
+      }
+      if (hours[14].conditions.toLowerCase().includes("sun")) {
         const sun = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -162,10 +162,11 @@ export function todayReport() {
         sun.appendChild(use);
         iconPM = sun;
       }
+
       icon2.appendChild(iconPM);
 
       // night
-      if (hours[22].conditions.includes("cloud")) {
+      if (hours[22].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -180,44 +181,40 @@ export function todayReport() {
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
         iconNight = cloud;
-
-        if (hours[22].conditions.includes("Partially")) {
-          const partial = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          partial.setAttribute("viewBox", "0 0 24 24");
-          partial.setAttribute("width", "50px");
-          partial.setAttribute("height", "50px");
-          const use = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "use"
-          );
-          use.setAttributeNS(
-            "http://www.w3.org/1999/xlink",
-            "href",
-            "#partial-night"
-          );
-          partial.appendChild(use);
-          iconNight = partial;
-        }
-        if (hours[22].conditions.includes("rain")) {
-          const rain = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          rain.setAttribute("viewBox", "0 0 24 24");
-          rain.setAttribute("width", "50px");
-          rain.setAttribute("height", "50px");
-          const use = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "use"
-          );
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
-          rain.appendChild(use);
-          iconAM = rain;
-        }
-      } else {
+      }
+      if (hours[22].conditions.toLowerCase().includes("partially")) {
+        const partial = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        partial.setAttribute("viewBox", "0 0 24 24");
+        partial.setAttribute("width", "50px");
+        partial.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
+        partial.appendChild(use);
+        iconNight = partial;
+      }
+      if (hours[22].conditions.toLowerCase().includes("rain")) {
+        const rain = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        rain.setAttribute("viewBox", "0 0 24 24");
+        rain.setAttribute("width", "50px");
+        rain.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
+        rain.appendChild(use);
+        iconNight = rain;
+      }
+      if (hours[22].conditions.toLowerCase().includes("clear")) {
         const clear = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -237,17 +234,10 @@ export function todayReport() {
         clear.appendChild(use);
         iconNight = clear;
       }
+
       icon3.appendChild(iconNight);
 
-      // description box
-      const displayDescription = document.querySelector(".description");
-      displayDescription.textContent = `${description}`;
-
-      // rain, temp and wind box
-      // would have to get the time and change the morning/ afternoon forecast to blank if it had already passed
-
       // rain box
-      const displayRain = document.querySelector(".rainDescrip");
       const rainDescripAM = document.querySelector(".rainDescripAM");
       const rainDescripPM = document.querySelector(".rainDescripPM");
       const rainDescripNight = document.querySelector(".rainDescripNight");
@@ -263,36 +253,53 @@ export function todayReport() {
       if (now > 12) {
         rainDescripAM.textContent = "--";
       } else {
-        rainDescripAM.textContent = `There is a ${mornRain}% chance of rain`;
+        rainDescripAM.textContent = `${mornRain}%`;
       }
 
       if (now > 18) {
         rainDescripPM.textContent = "--";
       } else {
-        rainDescripPM.textContent = `In the afternoon there is a ${aftRain}%`;
+        rainDescripPM.textContent = `${aftRain}%`;
       }
 
-      // if (timeNow > 22) {
-      //  rainDescripNight.textContent = "--";
-      // } else {
-      rainDescripNight.textContent = `There is a ${nightRain}% chance at night`;
-      //}
+      rainDescripNight.textContent = `${nightRain}%`;
 
       // temp box
       let temp;
       temp = response.days[0].tempmax;
-      let celsius = Math.round((temp - 32) / (9 / 5));
-      const displayTemp = document.querySelector(".tempDescrip");
-      displayTemp.textContent = `The maximum temperature will be: ${celsius}C.`;
+      let mornTemp = Math.round(hours[8].temp);
+      let aftTemp = Math.round(hours[14].temp);
+      let nightTemp = Math.round(hours[22].temp);
+
+      let mornTempC = Math.round((mornTemp - 32) / (9 / 5));
+      let aftTempC = Math.round((aftTemp - 32) / (9 / 5));
+      let nightTempC = Math.round((nightTemp - 32) / (9 / 5));
+
+      const displayTempAM = document.querySelector(".tempDescripAM");
+      displayTempAM.textContent = mornTempC;
+
+      const displayTempPM = document.querySelector(".tempDescripPM");
+      displayTempPM.textContent = aftTempC;
+
+      const displayTempNight = document.querySelector(".tempDescripNight");
+      displayTempNight.textContent = nightTempC;
 
       // wind box
-      //rain = response.days[0].precipchance;
-      let wind;
-      wind = response.days[0].windspeed;
-      let windRounded = Math.round(wind);
+      let mornWind = Math.round(hours[8].windspeed);
+      let aftWind = Math.round(hours[14].windspeed);
+      let nightWind = Math.round(hours[22].windspeed);
 
-      const displayWind = document.querySelector(".windDescrip");
-      displayWind.textContent = `The wind speed will be ${windRounded}mph.`;
-      console.log(description);
+      const displayWindAM = document.querySelector(".windDescripAM");
+      displayWindAM.textContent = `${mornWind}mph`;
+
+      const displayWindPM = document.querySelector(".windDescripPM");
+      displayWindPM.textContent = `${aftWind}mph`;
+
+      const displayWindNight = document.querySelector(".windDescripNight");
+      displayWindNight.textContent = `${nightWind}mph`;
+
+      // description box
+      const displayDescription = document.querySelector(".description");
+      displayDescription.textContent = `${description}`;
     });
 }

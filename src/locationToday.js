@@ -396,7 +396,9 @@ export function locationToday() {
       icon3.appendChild(iconNight);
 
       // rain box
-      // rain box
+      const time = new Date();
+      const now = time.getHours();
+
       const rainDescripAM = document.querySelector(".rainDescripAM");
       const rainDescripPM = document.querySelector(".rainDescripPM");
       const rainDescripNight = document.querySelector(".rainDescripNight");
@@ -405,8 +407,18 @@ export function locationToday() {
       let aftRain = Math.round(hours[14].precipprob);
       let nightRain = Math.round(hours[22].precipprob);
 
-      rainDescripAM.textContent = `${mornRain}%`;
-      rainDescripPM.textContent = `${aftRain}%`;
+      if (now > 12) {
+        rainDescripAM.textContent = "--";
+      } else {
+        rainDescripAM.textContent = `${mornRain}%`;
+      }
+
+      if (now > 18) {
+        rainDescripPM.textContent = "--";
+      } else {
+        rainDescripPM.textContent = `${aftRain}%`;
+      }
+
       rainDescripNight.textContent = `${nightRain}%`;
 
       // temp box

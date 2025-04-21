@@ -5,12 +5,12 @@ import { todayDate, tomorrowDate } from "./date.js";
 import { locationToday } from "./locationToday.js";
 import { locationTom } from "./locationTom.js";
 
-todayReport();
-tomorrowReport();
-todayDate();
-tomorrowDate();
-
 document.addEventListener("DOMContentLoaded", () => {
+  todayReport();
+  tomorrowReport();
+  todayDate();
+  tomorrowDate();
+
   const locationButton = document.querySelector("button");
   locationButton.addEventListener("click", (event) => {
     console.log("submitted");

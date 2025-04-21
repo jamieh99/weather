@@ -155,7 +155,8 @@ button:hover {
   grid-area: head;
   width: 30%;
   padding: 2px;
-  background-color: #1992d4;
+  /*background-color: #1992d4;*/
+  background-color: white;
   border-radius: 5px;
   border-color: darkblue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -164,7 +165,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   place-self: center;
-  color: white;
+  color: darkblue;
 }
 
 .todayReport {
@@ -180,13 +181,13 @@ button:hover {
 .todayDate {
   width: 35%;
   padding-left: 5px;
-  background-color: #1992d4;
+  background-color: white;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: large;
   display: flex;
   margin-bottom: 5px;
-  color: white;
+  color: darkblue;
 }
 
 .report {
@@ -208,7 +209,6 @@ button:hover {
 .report div {
   width: 50px;
   height: 40px;
-
   display: flex;
   align-items: center;
 }
@@ -216,6 +216,16 @@ button:hover {
 .report .period {
   width: 50px;
   height: 20px;
+}
+
+.description {
+  background-color: white;
+  border: 3px solid #1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  color: darkblue;
+  display: flex;
+  align-items: center;
 }
 
 .tomorrowReport {
@@ -231,15 +241,15 @@ button:hover {
 .tomorrowDate {
   width: 35%;
   padding-left: 5px;
-  background-color: #1992d4;
+  /*background-color: #1992d4;*/
   border-radius: 5px;
-
+  background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: large;
   display: flex;
   margin-bottom: 5px;
 
-  color: white;
+  color: darkblue;
 }
 
 .reportForTomorrow {
@@ -250,6 +260,33 @@ button:hover {
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: repeat(16, auto);
+  align-items: center;
+}
+
+.reportForTomorrow .tomorrowTitle {
+  width: 115px;
+  place-self: center;
+}
+
+.reportForTomorrow div {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.reportForTomorrow .tomPeriod {
+  width: 50px;
+  height: 20px;
+}
+
+.tomorrowDescription {
+  background-color: white;
+  border: 3px solid #1992d4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  color: darkblue;
+  display: flex;
   align-items: center;
 }
 

@@ -11,21 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
   todayDate();
   tomorrowDate();
 
-  const locationButton = document.querySelector("button");
+  const locationButton = document.querySelector(".submit");
   locationButton.addEventListener("click", (event) => {
     console.log("submitted");
-    event.preventDefault();
     locationToday();
     locationTom();
   });
 });
-
-/*function loadReport() {
-  const bottom = document.querySelector(".bottom");
-  bottom.innerHTML = "";
-  const location = document.querySelector(".bottom header");
-  location.textContent = 
-    //the input from the user
-    locationToday();
-  locationTom();
-}*/

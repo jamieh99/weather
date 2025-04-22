@@ -1,37 +1,81 @@
 export function locationTom() {
-  //if location does not exist throw error
   let description = "";
+  let resolvedAddress = "";
   let hours;
 
   const userInput = document.querySelector("#userInput").value;
   const newHeader = document.querySelector(".bottom header");
-  newHeader.textContent = `Weather for ${userInput}`;
+  const icon1 = document.querySelector(".tomIcon1");
+  const icon2 = document.querySelector(".tomIcon2");
+  const icon3 = document.querySelector(".tomIcon3");
+  const rainDescripAM = document.querySelector(".tomRainDescripAM");
+  const rainDescripPM = document.querySelector(".tomRainDescripPM");
+  const rainDescripNight = document.querySelector(".tomRainDescripNight");
+  const displayTempAM = document.querySelector(".tomTempDescripAM");
+  const displayTempPM = document.querySelector(".tomTempDescripPM");
+  const displayTempNight = document.querySelector(".tomTempDescripNight");
+  const displayWindAM = document.querySelector(".tomWindDescripAM");
+  const displayWindPM = document.querySelector(".tomWindDescripPM");
+  const displayWindNight = document.querySelector(".tomWindDescripNight");
+  const displayDescription = document.querySelector(".tomorrowDescription");
+
   fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${userInput}?key=CQX6SHJ8GKK4PZYZUHBW59NNL`,
-    { mode: "cors" }
+    {
+      mode: "cors",
+    }
   )
-    .then(function (response) {
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       return response.json();
     })
+
     .then(function (response) {
       description = response.days[1].description;
+      console.log(response); //resolvedAddress
       hours = response.days[1].hours;
       console.log(hours);
 
+      // resolved address - for when the user puts in a partial or muddled address
+      // Visual Crossing will resolve it to whatever it sees fit.
+
+      resolvedAddress = response.resolvedAddress;
+      console.log(resolvedAddress);
+
+      newHeader.textContent = `Weather for ${resolvedAddress}`;
+
       // icons box
-      const icon1 = document.querySelector(".tomIcon1");
+
       icon1.innerHTML = "";
-      const icon2 = document.querySelector(".tomIcon2");
+
       icon2.innerHTML = "";
-      const icon3 = document.querySelector(".tomIcon3");
+
       icon3.innerHTML = "";
-      let tomIconAM;
-      let tomIconPM;
-      let tomIconNight;
+      let iconAM;
+      let iconPM;
+      let iconNight;
 
       // AM
       // rmemeber that includes is case sensitive
       console.log(response.days[1].hours[8].conditions.toLowerCase());
+      if (hours[8].conditions.toLowerCase().includes("clear")) {
+        const clear = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        clear.setAttribute("viewBox", "0 0 24 24");
+        clear.setAttribute("width", "50px");
+        clear.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#sunny");
+        clear.appendChild(use);
+        iconAM = clear;
+      }
       if (hours[8].conditions.toLowerCase().includes("overcast")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
@@ -46,7 +90,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
-        tomIconAM = cloud;
+        iconAM = cloud;
       }
       if (hours[8].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
@@ -62,7 +106,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
-        tomIconAM = cloud;
+        iconAM = cloud;
       }
       if (hours[8].conditions.toLowerCase().includes("rain")) {
         const rain = document.createElementNS(
@@ -78,7 +122,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
         rain.appendChild(use);
-        tomIconAM = rain;
+        iconAM = rain;
       }
       if (hours[8].conditions.toLowerCase().includes("heavy")) {
         const pouring = document.createElementNS(
@@ -94,7 +138,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#pouring");
         pouring.appendChild(use);
-        tomIconAM = pouring;
+        iconAM = pouring;
       }
       if (hours[8].conditions.toLowerCase().includes("snow")) {
         const snow = document.createElementNS(
@@ -110,7 +154,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#snowy");
         snow.appendChild(use);
-        tomIconAM = snow;
+        iconAM = snow;
       }
       if (hours[8].conditions.toLowerCase().includes("sun")) {
         const sun = document.createElementNS(
@@ -126,7 +170,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#sunny");
         sun.appendChild(use);
-        tomIconAM = sun;
+        iconAM = sun;
       }
       if (hours[8].conditions.toLowerCase().includes("partial")) {
         const partial = document.createElementNS(
@@ -146,12 +190,67 @@ export function locationTom() {
           "#partially-cloudy"
         );
         partial.appendChild(use);
-        tomIconAM = partial;
+        iconAM = partial;
+      }
+      if (hours[8].conditions.toLowerCase().includes("storm")) {
+        const storm = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        storm.setAttribute("viewBox", "0 0 24 24");
+        storm.setAttribute("width", "50px");
+        storm.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#stormy");
+        storm.appendChild(use);
+        iconAM = storm;
+      }
+      if (hours[8].conditions.toLowerCase().includes("fog")) {
+        const fog = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        fog.setAttribute("viewBox", "0 0 24 24");
+        fog.setAttribute("width", "50px");
+        fog.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#fog");
+        fog.appendChild(use);
+        iconAM = fog;
       }
 
-      icon1.appendChild(tomIconAM);
+      // this checks if iconAM is null before appending
+      // if it is null, nothing will be appended to icon1
+      // and instead its textContent will be a '?'
+      if (iconAM) {
+        icon1.appendChild(iconAM);
+      } else {
+        icon1.textContent = "?";
+      }
 
       // PM
+      if (hours[14].conditions.toLowerCase().includes("clear")) {
+        const clear = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        clear.setAttribute("viewBox", "0 0 24 24");
+        clear.setAttribute("width", "50px");
+        clear.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#sunny");
+        clear.appendChild(use);
+        iconPM = clear;
+      }
       if (hours[14].conditions.toLowerCase().includes("overcast")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
@@ -166,8 +265,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
-        tomIconPM = cloud;
-        console.log("it is saying overcast but");
+        iconPM = cloud;
       }
       if (hours[14].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
@@ -183,7 +281,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
-        tomIconPM = cloud;
+        iconPM = cloud;
       }
       if (hours[14].conditions.toLowerCase().includes("rain")) {
         const rain = document.createElementNS(
@@ -199,7 +297,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
         rain.appendChild(use);
-        tomIconPM = rain;
+        iconPM = rain;
       }
       if (hours[14].conditions.toLowerCase().includes("heavy")) {
         const pouring = document.createElementNS(
@@ -215,7 +313,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#pouring");
         pouring.appendChild(use);
-        tomIconPM = pouring;
+        iconPM = pouring;
       }
       if (hours[14].conditions.toLowerCase().includes("snow")) {
         const snow = document.createElementNS(
@@ -231,7 +329,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#snowy");
         snow.appendChild(use);
-        tomIconPM = snow;
+        iconPM = snow;
       }
       if (hours[14].conditions.toLowerCase().includes("sun")) {
         const sun = document.createElementNS(
@@ -247,7 +345,7 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#sunny");
         sun.appendChild(use);
-        tomIconPM = sun;
+        iconPM = sun;
       }
       if (hours[14].conditions.toLowerCase().includes("partial")) {
         const partial = document.createElementNS(
@@ -267,13 +365,49 @@ export function locationTom() {
           "#partially-cloudy"
         );
         partial.appendChild(use);
-        tomIconPM = partial;
+        iconPM = partial;
+      }
+      if (hours[14].conditions.toLowerCase().includes("storm")) {
+        const storm = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        storm.setAttribute("viewBox", "0 0 24 24");
+        storm.setAttribute("width", "50px");
+        storm.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#stormy");
+        storm.appendChild(use);
+        iconPM = storm;
+      }
+      if (hours[14].conditions.toLowerCase().includes("fog")) {
+        const fog = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        fog.setAttribute("viewBox", "0 0 24 24");
+        fog.setAttribute("width", "50px");
+        fog.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#fog");
+        fog.appendChild(use);
+        iconPM = fog;
       }
 
-      icon2.appendChild(tomIconPM);
+      if (iconPM) {
+        icon2.appendChild(iconPM);
+      } else {
+        icon2.textContent = "?";
+      }
       // night
 
-      if (hours[22].conditions.toLowerCase().includes("overcast")) {
+      if (hours[20].conditions.toLowerCase().includes("overcast")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -287,9 +421,9 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
-        tomIconNight = cloud;
+        iconNight = cloud;
       }
-      if (hours[22].conditions.toLowerCase().includes("cloud")) {
+      if (hours[20].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -303,9 +437,9 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
-        tomIconNight = cloud;
+        iconNight = cloud;
       }
-      if (hours[22].conditions.toLowerCase().includes("rain")) {
+      if (hours[20].conditions.toLowerCase().includes("rain")) {
         const rain = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -319,9 +453,9 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#rainy");
         rain.appendChild(use);
-        tomIconNight = rain;
+        iconNight = rain;
       }
-      if (hours[22].conditions.toLowerCase().includes("heavy")) {
+      if (hours[20].conditions.toLowerCase().includes("heavy")) {
         const pouring = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -335,9 +469,9 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#pouring");
         pouring.appendChild(use);
-        tomIconNight = pouring;
+        iconNight = pouring;
       }
-      if (hours[22].conditions.toLowerCase().includes("snow")) {
+      if (hours[20].conditions.toLowerCase().includes("snow")) {
         const snow = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -351,9 +485,9 @@ export function locationTom() {
         );
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#snowy");
         snow.appendChild(use);
-        tomIconNight = snow;
+        iconNight = snow;
       }
-      if (hours[22].conditions.toLowerCase().includes("clear")) {
+      if (hours[20].conditions.toLowerCase().includes("clear")) {
         const clear = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -371,9 +505,9 @@ export function locationTom() {
           "#clear-night"
         );
         clear.appendChild(use);
-        tomIconNight = clear;
+        iconNight = clear;
       }
-      if (hours[22].conditions.toLowerCase().includes("partially")) {
+      if (hours[20].conditions.toLowerCase().includes("partially")) {
         const partial = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -391,16 +525,47 @@ export function locationTom() {
           "#partial-night"
         );
         partial.appendChild(use);
-        tomIconNight = partial;
+        iconNight = partial;
+      }
+      if (hours[20].conditions.toLowerCase().includes("storm")) {
+        const storm = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        storm.setAttribute("viewBox", "0 0 24 24");
+        storm.setAttribute("width", "50px");
+        storm.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#stormy");
+        storm.appendChild(use);
+        iconNight = storm;
+      }
+      if (hours[20].conditions.toLowerCase().includes("fog")) {
+        const fog = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        fog.setAttribute("viewBox", "0 0 24 24");
+        fog.setAttribute("width", "50px");
+        fog.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#fog");
+        fog.appendChild(use);
+        iconNight = fog;
       }
 
-      icon3.appendChild(tomIconNight);
-
+      if (iconNight) {
+        icon3.appendChild(iconNight);
+      } else {
+        icon3.textContent = "?";
+      }
       // rain box
-      const rainDescripAM = document.querySelector(".tomRainDescripAM");
-      const rainDescripPM = document.querySelector(".tomRainDescripPM");
-      const rainDescripNight = document.querySelector(".tomRainDescripNight");
-
       let mornRain = Math.round(hours[8].precipprob);
       let aftRain = Math.round(hours[14].precipprob);
       let nightRain = Math.round(hours[22].precipprob);
@@ -420,13 +585,10 @@ export function locationTom() {
       let aftTempC = Math.round((aftTemp - 32) / (9 / 5));
       let nightTempC = Math.round((nightTemp - 32) / (9 / 5));
 
-      const displayTempAM = document.querySelector(".tomTempDescripAM");
       displayTempAM.textContent = mornTempC;
 
-      const displayTempPM = document.querySelector(".tomTempDescripPM");
       displayTempPM.textContent = aftTempC;
 
-      const displayTempNight = document.querySelector(".tomTempDescripNight");
       displayTempNight.textContent = nightTempC;
 
       //wind box
@@ -434,17 +596,30 @@ export function locationTom() {
       let aftWind = Math.round(hours[14].windspeed);
       let nightWind = Math.round(hours[22].windspeed);
 
-      const displayWindAM = document.querySelector(".tomWindDescripAM");
       displayWindAM.textContent = `${mornWind}mph`;
 
-      const displayWindPM = document.querySelector(".tomWindDescripPM");
       displayWindPM.textContent = `${aftWind}mph`;
 
-      const displayWindNight = document.querySelector(".tomWindDescripNight");
       displayWindNight.textContent = `${nightWind}mph`;
 
       // description box
-      const displayDescription = document.querySelector(".tomorrowDescription");
+
       displayDescription.textContent = `${description}`;
+    })
+    .catch((error) => {
+      newHeader.textContent = "";
+      icon1.innerHTML = "";
+      icon2.innerHTML = "";
+      icon3.innerHTML = "";
+      rainDescripAM.innerHTML = "";
+      rainDescripPM.innerHTML = "";
+      rainDescripNight.innerHTML = "";
+      displayTempAM.innerHTML = "";
+      displayTempPM.innerHTML = "";
+      displayTempNight.innerHTML = "";
+      displayWindAM.innerHTML = "";
+      displayWindPM.innerHTML = "";
+      displayWindNight.innerHTML = "";
+      displayDescription.innerHTML = "";
     });
 }

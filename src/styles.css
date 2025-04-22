@@ -5,40 +5,45 @@ body {
   width: 100vw;
   /*overflow: hidden; /* Hide scrollbars */
   font-family: Arial, Helvetica, sans-serif;
-  background-color: lightblue;
+  background-color: #e2e8f0;
   display: flex;
   justify-content: center;
 }
 
 .container {
-  width: 90%;
+  width: 95%;
   display: grid;
-  grid-template-rows: 350px 1fr;
+  grid-template-rows: 380px 1fr;
   border-radius: 10px;
-  border-left: 8px solid#1992d4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .top {
-  background-image: url("./images/goatfell.jpg");
-  background-color: #1992d4;
-  background-repeat: space;
-  background-position: center;
-  background-size: 100% 100%;
-  display: flex;
-  flex-direction: column;
+  background-color: #a8b2c3;
+  display: grid;
+  grid-template-rows: 50px 50px 250px;
   gap: 10px;
   padding-top: 10px;
 }
 
+.image {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .top header {
-  background-color: #1992d4;
+  background-color: #787980;
   color: white;
   font-size: large;
   display: grid;
   grid-template-columns: 60% 20% 5% 15%;
   border-radius: 10px;
-  border-left: 8px solid lightblue;
+  border-left: 8px solid lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 80%;
   height: 50px;
@@ -79,12 +84,12 @@ body {
 }
 
 .search {
-  background-color: #1992d4;
+  background-color: #787980;
   color: white;
   font-size: large;
   display: flex;
   border-radius: 10px;
-  border-left: 8px solid lightblue;
+  border-left: 8px solid lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 80%;
   height: 50px;
@@ -92,20 +97,24 @@ body {
   padding-left: 10px;
 }
 
-form {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 80% 20%;
-  /*justify-content: flex-start;*/
-  align-items: center;
-}
-
-fieldset {
+.inputArea {
   width: 100%;
   border: transparent;
   margin: 0;
   padding: 0;
   place-self: center;
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+.searchBox {
+  display: flex;
+  grid-template-columns: auto auto;
+  gap: 5px;
+  align-items: center;
+}
+
+.inputBox {
+  display: flex;
 }
 
 input[type="text"] {
@@ -115,30 +124,44 @@ input[type="text"] {
   border: none;
   box-sizing: border-box;
   border-radius: 20px;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
   background-color: #e2e8f0;
+  padding-right: 0%;
 }
 
 input:focus {
   background-color: white;
 }
+/* to remove the black outline in focus use 'outline:none'
+this could affect the appearnce of the clear button*/
 
-button {
+.clear {
+  width: 25px;
+  height: 24px;
+  background-color: #e2e8f0;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.submit {
   width: 70px;
   height: 30px;
   background-color: #e2e8f0;
   border-radius: 20px;
-  border-color: darkblue;
+  border-color: lightgray;
   font-size: 16px;
-  color: darkblue;
+  color: black;
   cursor: pointer;
 }
 
-button:hover {
+.submit:hover {
   width: 90px;
 }
 
 .bottom {
-  border: 5px solid lightblue;
+  background-color: #a8b2c3;
   display: grid;
   grid-template-areas:
     "head head"
@@ -146,7 +169,6 @@ button:hover {
   grid-template-columns: 50% 50%;
   grid-template-rows: 30px 1fr;
   gap: 5px;
-  margin: 5px;
   color: darkblue;
   justify-content: center;
 }
@@ -170,7 +192,7 @@ button:hover {
 
 .todayReport {
   grid-area: tod;
-  border: 3px solid #1992d4;
+  background-color: lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   padding: 5px;
@@ -192,13 +214,16 @@ button:hover {
 
 .report {
   width: 100%;
-  background-color: rgb(141, 198, 247);
+  /*background-color: rgb(141, 198, 247);*/
+  /*background-color: #a8b2c3;*/
+  background-color: #787980;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: repeat(16, auto);
   align-items: center;
+  color: white;
 }
 
 .report .title {
@@ -211,6 +236,7 @@ button:hover {
   height: 40px;
   display: flex;
   align-items: center;
+  padding-top: 5px;
 }
 
 .report .period {
@@ -220,7 +246,7 @@ button:hover {
 
 .description {
   background-color: white;
-  border: 3px solid #1992d4;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   color: darkblue;
@@ -230,7 +256,7 @@ button:hover {
 
 .tomorrowReport {
   grid-area: tom;
-  border: 3px solid #1992d4;
+  background-color: lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   padding: 5px;
@@ -254,13 +280,14 @@ button:hover {
 
 .reportForTomorrow {
   width: 100%;
-  background-color: rgb(141, 198, 247);
+  background-color: #787980;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: repeat(16, auto);
   align-items: center;
+  color: white;
 }
 
 .reportForTomorrow .tomorrowTitle {
@@ -273,6 +300,7 @@ button:hover {
   height: 40px;
   display: flex;
   align-items: center;
+  padding-top: 5px;
 }
 
 .reportForTomorrow .tomPeriod {
@@ -282,96 +310,10 @@ button:hover {
 
 .tomorrowDescription {
   background-color: white;
-  border: 3px solid #1992d4;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   color: darkblue;
   display: flex;
   align-items: center;
 }
-
-/* VERSION one 
-
-.todayReport {
-  grid-area: tod;
-  border: 3px solid #1992d4;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-  padding: 5px;
-  display: grid;
-  grid-template-areas:
-    "date"
-    "icons"
-    "desc"
-    "rtw";
-  grid-template-rows: 20px 1fr 30px 2fr;
-}
-
-.todayDate {
-  grid-area: date;
-  height: 20px;
-}
-
-.icons {
-  grid-area: icons;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
-.description {
-  grid-area: desc;
-}
-
-.rainTempWind {
-  grid-area: rtw;
-
-  display: grid;
-  grid-template-areas:
-    "rain"
-    "temp"
-    "wind";
-}
-
-.rain {
-  grid-area: rain;
-  display: flex;
-  flex-wrap: nowrap;
-  /*justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-/*
-.rain .heading {
-  width: 200px;
-}
-
-.temp {
-  grid-area: temp;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.wind {
-  grid-area: wind;
-  display: flex;
-  flex-wrap: nowrap;
-}
-  
-  
-
-.tomorrowReport {
-  grid-area: tom;
-  border: 3px solid #1992d4;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.tomorrowDate {
-  border: 1px solid #1992d4;
-}
-  ENOD OF VESRION ONE
-*/

@@ -1,28 +1,57 @@
 export function locationToday() {
   let description = "";
+  let resolvedAddress = "";
   let hours;
 
   const userInput = document.querySelector("#userInput").value;
   const newHeader = document.querySelector(".bottom header");
-  newHeader.textContent = `Weather for ${userInput}`;
+  const icon1 = document.querySelector(".icon1");
+  const icon2 = document.querySelector(".icon2");
+  const icon3 = document.querySelector(".icon3");
+  const rainDescripAM = document.querySelector(".rainDescripAM");
+  const rainDescripPM = document.querySelector(".rainDescripPM");
+  const rainDescripNight = document.querySelector(".rainDescripNight");
+  const displayTempAM = document.querySelector(".tempDescripAM");
+  const displayTempPM = document.querySelector(".tempDescripPM");
+  const displayTempNight = document.querySelector(".tempDescripNight");
+  const displayWindAM = document.querySelector(".windDescripAM");
+  const displayWindPM = document.querySelector(".windDescripPM");
+  const displayWindNight = document.querySelector(".windDescripNight");
+  const displayDescription = document.querySelector(".description");
+
   fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${userInput}?key=CQX6SHJ8GKK4PZYZUHBW59NNL`,
-    { mode: "cors" }
+    {
+      mode: "cors",
+    }
   )
-    .then(function (response) {
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       return response.json();
     })
+
     .then(function (response) {
       description = response.days[0].description;
+      console.log(response); //resolvedAddress
       hours = response.days[0].hours;
       console.log(hours);
 
+      // resolved address - for when the user puts in a partial or muddled address
+      // Visual Crossing will resolve it to whatever it sees fit.
+
+      resolvedAddress = response.resolvedAddress;
+      console.log(resolvedAddress);
+
+      newHeader.textContent = `Weather for ${resolvedAddress}`;
+
       // icons box
-      const icon1 = document.querySelector(".icon1");
+
       icon1.innerHTML = "";
-      const icon2 = document.querySelector(".icon2");
+
       icon2.innerHTML = "";
-      const icon3 = document.querySelector(".icon3");
+
       icon3.innerHTML = "";
       let iconAM;
       let iconPM;
@@ -30,7 +59,23 @@ export function locationToday() {
 
       // AM
       // rmemeber that includes is case sensitive
-      console.log(response.days[1].hours[8].conditions.toLowerCase());
+
+      if (hours[8].conditions.toLowerCase().includes("clear")) {
+        const clear = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        clear.setAttribute("viewBox", "0 0 24 24");
+        clear.setAttribute("width", "50px");
+        clear.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#sunny");
+        clear.appendChild(use);
+        iconAM = clear;
+      }
       if (hours[8].conditions.toLowerCase().includes("overcast")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
@@ -147,10 +192,65 @@ export function locationToday() {
         partial.appendChild(use);
         iconAM = partial;
       }
+      if (hours[8].conditions.toLowerCase().includes("storm")) {
+        const storm = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        storm.setAttribute("viewBox", "0 0 24 24");
+        storm.setAttribute("width", "50px");
+        storm.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#stormy");
+        storm.appendChild(use);
+        iconAM = storm;
+      }
+      if (hours[8].conditions.toLowerCase().includes("fog")) {
+        const fog = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        fog.setAttribute("viewBox", "0 0 24 24");
+        fog.setAttribute("width", "50px");
+        fog.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#fog");
+        fog.appendChild(use);
+        iconAM = fog;
+      }
 
-      icon1.appendChild(iconAM);
+      // this checks if iconAM is null before appending
+      // if it is null, nothing will be appended to icon1
+      // and instead its textContent will be a '?'
+      if (iconAM) {
+        icon1.appendChild(iconAM);
+      } else {
+        icon1.textContent = "?";
+      }
 
       // PM
+      if (hours[14].conditions.toLowerCase().includes("clear")) {
+        const clear = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        clear.setAttribute("viewBox", "0 0 24 24");
+        clear.setAttribute("width", "50px");
+        clear.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#sunny");
+        clear.appendChild(use);
+        iconPM = clear;
+      }
       if (hours[14].conditions.toLowerCase().includes("overcast")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
@@ -166,7 +266,6 @@ export function locationToday() {
         use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#cloudy");
         cloud.appendChild(use);
         iconPM = cloud;
-        console.log("it is saying overcast but");
       }
       if (hours[14].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
@@ -268,11 +367,47 @@ export function locationToday() {
         partial.appendChild(use);
         iconPM = partial;
       }
+      if (hours[14].conditions.toLowerCase().includes("storm")) {
+        const storm = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        storm.setAttribute("viewBox", "0 0 24 24");
+        storm.setAttribute("width", "50px");
+        storm.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#stormy");
+        storm.appendChild(use);
+        iconPM = storm;
+      }
+      if (hours[14].conditions.toLowerCase().includes("fog")) {
+        const fog = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        fog.setAttribute("viewBox", "0 0 24 24");
+        fog.setAttribute("width", "50px");
+        fog.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#fog");
+        fog.appendChild(use);
+        iconPM = fog;
+      }
 
-      icon2.appendChild(iconPM);
+      if (iconPM) {
+        icon2.appendChild(iconPM);
+      } else {
+        icon2.textContent = "?";
+      }
       // night
 
-      if (hours[22].conditions.toLowerCase().includes("overcast")) {
+      if (hours[20].conditions.toLowerCase().includes("overcast")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -288,7 +423,7 @@ export function locationToday() {
         cloud.appendChild(use);
         iconNight = cloud;
       }
-      if (hours[22].conditions.toLowerCase().includes("cloud")) {
+      if (hours[20].conditions.toLowerCase().includes("cloud")) {
         const cloud = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -304,7 +439,7 @@ export function locationToday() {
         cloud.appendChild(use);
         iconNight = cloud;
       }
-      if (hours[22].conditions.toLowerCase().includes("rain")) {
+      if (hours[20].conditions.toLowerCase().includes("rain")) {
         const rain = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -320,7 +455,7 @@ export function locationToday() {
         rain.appendChild(use);
         iconNight = rain;
       }
-      if (hours[22].conditions.toLowerCase().includes("heavy")) {
+      if (hours[20].conditions.toLowerCase().includes("heavy")) {
         const pouring = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -336,7 +471,7 @@ export function locationToday() {
         pouring.appendChild(use);
         iconNight = pouring;
       }
-      if (hours[22].conditions.toLowerCase().includes("snow")) {
+      if (hours[20].conditions.toLowerCase().includes("snow")) {
         const snow = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -352,7 +487,7 @@ export function locationToday() {
         snow.appendChild(use);
         iconNight = snow;
       }
-      if (hours[22].conditions.toLowerCase().includes("clear")) {
+      if (hours[20].conditions.toLowerCase().includes("clear")) {
         const clear = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -372,7 +507,7 @@ export function locationToday() {
         clear.appendChild(use);
         iconNight = clear;
       }
-      if (hours[22].conditions.toLowerCase().includes("partially")) {
+      if (hours[20].conditions.toLowerCase().includes("partially")) {
         const partial = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "svg"
@@ -392,16 +527,48 @@ export function locationToday() {
         partial.appendChild(use);
         iconNight = partial;
       }
+      if (hours[20].conditions.toLowerCase().includes("storm")) {
+        const storm = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        storm.setAttribute("viewBox", "0 0 24 24");
+        storm.setAttribute("width", "50px");
+        storm.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#stormy");
+        storm.appendChild(use);
+        iconNight = storm;
+      }
+      if (hours[20].conditions.toLowerCase().includes("fog")) {
+        const fog = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        fog.setAttribute("viewBox", "0 0 24 24");
+        fog.setAttribute("width", "50px");
+        fog.setAttribute("height", "50px");
+        const use = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#fog");
+        fog.appendChild(use);
+        iconNight = fog;
+      }
 
-      icon3.appendChild(iconNight);
+      if (iconNight) {
+        icon3.appendChild(iconNight);
+      } else {
+        icon3.textContent = "?";
+      }
 
       // rain box
       const time = new Date();
       const now = time.getHours();
-
-      const rainDescripAM = document.querySelector(".rainDescripAM");
-      const rainDescripPM = document.querySelector(".rainDescripPM");
-      const rainDescripNight = document.querySelector(".rainDescripNight");
 
       let mornRain = Math.round(hours[8].precipprob);
       let aftRain = Math.round(hours[14].precipprob);
@@ -413,7 +580,7 @@ export function locationToday() {
         rainDescripAM.textContent = `${mornRain}%`;
       }
 
-      if (now > 18) {
+      if (now > 15) {
         rainDescripPM.textContent = "--";
       } else {
         rainDescripPM.textContent = `${aftRain}%`;
@@ -432,13 +599,10 @@ export function locationToday() {
       let aftTempC = Math.round((aftTemp - 32) / (9 / 5));
       let nightTempC = Math.round((nightTemp - 32) / (9 / 5));
 
-      const displayTempAM = document.querySelector(".tempDescripAM");
       displayTempAM.textContent = mornTempC;
 
-      const displayTempPM = document.querySelector(".tempDescripPM");
       displayTempPM.textContent = aftTempC;
 
-      const displayTempNight = document.querySelector(".tempDescripNight");
       displayTempNight.textContent = nightTempC;
 
       //wind box
@@ -446,17 +610,32 @@ export function locationToday() {
       let aftWind = Math.round(hours[14].windspeed);
       let nightWind = Math.round(hours[22].windspeed);
 
-      const displayWindAM = document.querySelector(".windDescripAM");
       displayWindAM.textContent = `${mornWind}mph`;
 
-      const displayWindPM = document.querySelector(".windDescripPM");
       displayWindPM.textContent = `${aftWind}mph`;
 
-      const displayWindNight = document.querySelector(".windDescripNight");
       displayWindNight.textContent = `${nightWind}mph`;
 
       // description box
-      const displayDescription = document.querySelector(".description");
+
       displayDescription.textContent = `${description}`;
+    })
+    .catch((error) => {
+      newHeader.textContent = "";
+      icon1.innerHTML = "";
+      icon2.innerHTML = "";
+      icon3.innerHTML = "";
+      rainDescripAM.innerHTML = "";
+      rainDescripPM.innerHTML = "";
+      rainDescripNight.innerHTML = "";
+      displayTempAM.innerHTML = "";
+      displayTempPM.innerHTML = "";
+      displayTempNight.innerHTML = "";
+      displayWindAM.innerHTML = "";
+      displayWindPM.innerHTML = "";
+      displayWindNight.innerHTML = "";
+      displayDescription.innerHTML = "";
+
+      alert("That location could not be found. Please try again.");
     });
 }

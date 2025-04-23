@@ -17,4 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     locationToday();
     locationTom();
   });
+  const userInput = document.querySelector(".text");
+  userInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      locationToday();
+      locationTom();
+      console.log("enter key pressed");
+    }
+  });
 });

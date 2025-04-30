@@ -6,14 +6,20 @@ import { locationToday } from "./locationToday.js";
 import { locationTom } from "./locationTom.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  todayReport();
-  tomorrowReport();
+  //todayReport();
+  //tomorrowReport();
   todayDate();
   tomorrowDate();
 
-  const locationButton = document.querySelector(".submit");
-  locationButton.addEventListener("click", (event) => {
+  const search = document.querySelector(".magnify-glass");
+  search.addEventListener("click", () => {
     console.log("submitted");
+    locationToday();
+    locationTom();
+  });
+
+  const locationButton = document.querySelector(".submit");
+  locationButton.addEventListener("click", () => {
     locationToday();
     locationTom();
   });

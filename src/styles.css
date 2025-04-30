@@ -145,15 +145,25 @@ this could affect the appearnce of the clear button*/
   border-bottom-right-radius: 10px;
 }
 
+.magnify-glass {
+  transition-property: width;
+}
+
+.magnify-glass:hover {
+  width: 30px;
+  height: 30px;
+}
+
 .submit {
   width: 70px;
   height: 30px;
   background-color: #e2e8f0;
   border-radius: 20px;
-  border-color: lightgray;
+  border: none;
   font-size: 16px;
-  color: black;
+  color: rgb(100, 100, 100);
   cursor: pointer;
+  /*box-shadow: none;*/
 }
 
 .submit:hover {

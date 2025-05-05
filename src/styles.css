@@ -150,7 +150,7 @@ this could affect the appearnce of the clear button*/
 }
 
 .magnify-glass:hover {
-  transform: scale(5) rotate(360deg);
+  transform: translate(30px) scale(5) rotate(360deg);
 }
 
 .bottom {

@@ -6,8 +6,8 @@ import { locationToday } from "./locationToday.js";
 import { locationTom } from "./locationTom.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  //todayReport();
-  //tomorrowReport();
+  todayReport();
+  tomorrowReport();
   todayDate();
   tomorrowDate();
 

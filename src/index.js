@@ -18,11 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     locationTom();
   });
 
-  const locationButton = document.querySelector(".submit");
-  locationButton.addEventListener("click", () => {
-    locationToday();
-    locationTom();
-  });
   const userInput = document.querySelector(".text");
   userInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
